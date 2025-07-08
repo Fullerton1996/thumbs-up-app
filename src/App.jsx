@@ -3,6 +3,8 @@ import './App.css'
 
 const EMOJI_BURST_DURATION = 1500; // ms
 const EMOJI_COUNT = 24;
+const YES_URL = 'https://www.youtube.com/watch?v=gD2lt5bOYOM';
+const NO_URL = 'https://www.youtube.com/watch?v=31g0YE61PLQ';
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -50,9 +52,23 @@ function EmojiBurst({ emoji, trigger }) {
 
 function App() {
   const [burst, setBurst] = useState({ type: null, ts: 0 });
+  const [redirectTimeout, setRedirectTimeout] = useState(null);
 
-  const handleYes = () => setBurst({ type: 'yes', ts: Date.now() });
-  const handleNo = () => setBurst({ type: 'no', ts: Date.now() });
+  const handleYes = () => {
+    setBurst({ type: 'yes', ts: Date.now() });
+    if (redirectTimeout) clearTimeout(redirectTimeout);
+    setRedirectTimeout(setTimeout(() => {
+      window.location.href = YES_URL;
+    }, EMOJI_BURST_DURATION));
+  };
+
+  const handleNo = () => {
+    setBurst({ type: 'no', ts: Date.now() });
+    if (redirectTimeout) clearTimeout(redirectTimeout);
+    setRedirectTimeout(setTimeout(() => {
+      window.location.href = NO_URL;
+    }, EMOJI_BURST_DURATION));
+  };
 
   return (
     <div className="yesno-app">
