@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function Home() {
   return (
     <div style={{textAlign: 'center', marginTop: '4rem'}}>
-      <h1>Welcome!</h1>
+      <h1>Hola, are you ready to sleep tonight?</h1>
       <p>Go to the <a href="/sleep">Sleep Question</a> page.</p>
     </div>
   );

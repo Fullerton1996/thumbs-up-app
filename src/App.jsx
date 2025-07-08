@@ -72,7 +72,6 @@ function App() {
 
   return (
     <div className="yesno-app">
-      <h1>Are you going to sleep tonight?</h1>
       <div className="button-row">
         <button className="yes-btn" onClick={handleYes}>Yes</button>
         <button className="no-btn" onClick={handleNo}>No</button>
